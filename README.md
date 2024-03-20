@@ -1,2 +1,2 @@
-# VecteurGR02
-Exercice sur les vecteurs avec le groupe 2 (H2024)
+# Liste
+Exercice sur les listes
