@@ -1,10 +1,11 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class VecteurTest {
-
-    @org.junit.jupiter.api.Test
+class ListeTest {
+    @Test
     void getNbElements() {
-        Vecteur test = new Vecteur();
+        Liste test = new Liste();
         assertEquals(0, test.getNbElements());
 
         test.ajouter(0);
@@ -14,43 +15,43 @@ class VecteurTest {
         assertEquals(2, test.getNbElements());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void estVide() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getElementAt() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void ajouter() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testAjouter() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testAjouter1() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void trouver() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void trouverTout() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void effacerAt() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void effacerTout() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void testEffacerTout() {
     }
 }
