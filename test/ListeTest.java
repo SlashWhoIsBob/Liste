@@ -51,13 +51,13 @@ class ListeTest {
 
     @Test
     void testInserer() {
-//        data.ajouter(-10, 0);
-//        data.ajouter(35, 4);
-//        data.ajouter(60, 8);
-//        assertEquals(-10, data.getElementAt(0));
-//        assertEquals(35, data.getElementAt(4));
-//        assertEquals(60, data.getElementAt(8));
-//        assertEquals(9, data.getNbElements());
+        data.ajouter(-10, 0);
+        data.ajouter(35, 4);
+        data.ajouter(60, 8);
+        assertEquals(-10, data.getElementAt(0));
+        assertEquals(35, data.getElementAt(4));
+        assertEquals(60, data.getElementAt(8));
+        assertEquals(9, data.getNbElements());
     }
 
     @org.junit.jupiter.api.Test

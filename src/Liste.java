@@ -23,13 +23,14 @@ public class Liste {
     }
 
     public int getElementAt(int index) {
-        int indexCourant = 0;
-        for(Noeud courant = premier; courant != null; courant = courant.prochain) {
-            if(indexCourant == index)
-                return courant.valeur;
-            indexCourant++;
-        }
-        return -1;
+        return getNoeudAt(index).valeur;
+    }
+
+    private Noeud getNoeudAt(int index) {
+        for(Noeud courant = premier; courant != null; courant = courant.prochain)
+            if(index-- == 0)
+                return courant;
+        return null;
     }
 
     public void ajouter(int valeur) {
@@ -47,37 +48,21 @@ public class Liste {
     }
 
     public void ajouter(int valeur, int index) {
-        if(index < 0 || index > nbElements) {
-            return;
-        }
-        if(index == 0) {
-            Noeud nouveau = new Noeud(valeur);
+        Noeud precedent = getNoeudAt(index - 1);
+        Noeud nouveau = new Noeud(valeur);
+        if(precedent == null) {
             nouveau.prochain = premier;
             premier = nouveau;
         } else {
-            Noeud precedent = premier;
-            for(int i = 0; i < index - 1; i++) {
-                precedent = precedent.prochain;
-            }
-
-            Noeud nouveau = new Noeud(valeur);
             nouveau.prochain = precedent.prochain;
             precedent.prochain = nouveau;
         }
         nbElements++;
     }
 
-    // Inutile dans ce code !!!
-    /* private void resize() {
-        int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
-        for (int i = 0; i < nbElements; i++)
-            nouveau[i] = tableau[i];
-        tableau = nouveau;
-    }*/
-
     public void ajouter(Liste autre) {
-        for (Noeud courant = autre.premier; courant != null; courant = courant.prochain)
-            this.ajouter(courant.valeur);
+        for (int i = 0; i < autre.getNbElements(); i++)
+            this.ajouter(autre.getElementAt(i));
     }
 
     public int trouver(int valeur) {
@@ -148,4 +133,4 @@ public class Liste {
         nbElements = 0;
     }
 
-}
+    }
