@@ -23,7 +23,14 @@ public class Liste {
     }
 
     /*public int getElementAt(int index) {
-        return tableau[index];
+        int i = 0;
+        for(Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if(i == index) {
+                return courant.valeur;
+            } else {
+                index++;
+            }
+        }
     }*/
 
     public void ajouter(int valeur) {
@@ -61,6 +68,7 @@ public class Liste {
         nbElements++;
     }
 
+    // Inutile dans ce code !!!
     /* private void resize() {
         int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
         for (int i = 0; i < nbElements; i++)
@@ -93,35 +101,52 @@ public class Liste {
         }
         return true;
     }
-/*
+
     public boolean effacerAt(int index) {
         if (index < 0 || index > nbElements)
             return false;
 
-        for (int i = index; i < nbElements; i++)
-            tableau[i] = tableau[i + 1];
+        if(index == 0) {
+            premier = premier.prochain;
+        }
+
+        Noeud precedent = premier;
+        for (int i = 0; i < index - 1; i++) {
+            precedent = precedent.prochain;
+        }
+
+        precedent.prochain = precedent.prochain.prochain;
         nbElements--;
         return true;
     }
 
     public boolean effacerTout(Liste autre) {
         boolean modifie = false;
-        for (int i = 0; i < autre.getNbElements(); i++) {
-            int valeurCherchee = autre.getElementAt(i);
-            int indexTrouve = this.trouver(valeurCherchee);
-            if (indexTrouve != -1) {
-                effacerAt(indexTrouve);
+
+        Noeud courant = premier;
+        Noeud precedent = null;
+
+        while (courant != null) {
+            if (autre.trouver(courant.valeur) != -1) {
+                if (precedent == null) {
+                    premier = courant.prochain;
+                } else {
+                    precedent.prochain = courant.prochain;
+                }
+                courant = courant.prochain;
+                nbElements--;
                 modifie = true;
+            } else {
+                precedent = courant;
+                courant = courant.prochain;
             }
         }
         return modifie;
     }
 
     public void effacerTout() {
-        //effacerTout(this);
-        tableau = new int[TAILLE_INITIALE];
+        premier = null;
         nbElements = 0;
     }
 
-     */
 }
