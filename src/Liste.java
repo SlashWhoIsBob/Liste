@@ -39,16 +39,28 @@ public class Liste {
         }
         nbElements++;
     }
-/*
+
     public void ajouter(int valeur, int index) {
-        if (nbElements == tableau.length)
-            resize();
-        for (int i = nbElements; i > index; i--)
-            tableau[i] = tableau[i - 1];
-        tableau[index] = valeur;
+        if(index < 0 || index > nbElements) {
+            return;
+        }
+        if(index == 0) {
+            Noeud nouveau = new Noeud(valeur);
+            nouveau.prochain = premier;
+            premier = nouveau;
+        } else {
+            Noeud precedent = premier;
+            for(int i = 0; i < index - 1; i++) {
+                precedent = precedent.prochain;
+            }
+
+            Noeud nouveau = new Noeud(valeur);
+            nouveau.prochain = precedent.prochain;
+            precedent.prochain = nouveau;
+        }
         nbElements++;
     }
-
+/*
     private void resize() {
         int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
         for (int i = 0; i < nbElements; i++)
