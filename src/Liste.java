@@ -22,16 +22,17 @@ public class Liste {
         return nbElements == 0;
     }
 
-    /*public int getElementAt(int index) {
-        int i = 0;
+    public int getElementAt(int index) {
+        int indexCourant = 0;
         for(Noeud courant = premier; courant != null; courant = courant.prochain) {
-            if(i == index) {
+            if(indexCourant == index) {
                 return courant.valeur;
             } else {
                 index++;
             }
         }
-    }*/
+        return -1;
+    }
 
     public void ajouter(int valeur) {
         Noeud dernier = null;

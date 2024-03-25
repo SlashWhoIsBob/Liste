@@ -19,14 +19,14 @@ public class Main {
         data.ajouter(10);
         System.out.println(data);
         System.out.println(data.getNbElements());
-/*
+
         System.out.println("Test 3: Ajouter des valeurs à des index spécifiques");
         data.ajouter(-1, 0);
         data.ajouter( 5, 4);
         data.ajouter(11, 8);
         System.out.println(data);
         System.out.println(data.getNbElements());
-
+/*
         System.out.println("Test 4: Ajouter des valeurs provenant d'un autre vecteur");
         Liste v2 = new Liste();
         v2.ajouter(50);
