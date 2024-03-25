@@ -25,11 +25,9 @@ public class Liste {
     public int getElementAt(int index) {
         int indexCourant = 0;
         for(Noeud courant = premier; courant != null; courant = courant.prochain) {
-            if(indexCourant == index) {
+            if(indexCourant == index)
                 return courant.valeur;
-            } else {
-                index++;
-            }
+            indexCourant++;
         }
         return -1;
     }
