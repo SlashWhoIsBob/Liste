@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListeTest {
     Liste data;
+
     @BeforeEach
     void setUp() {
         data = new Liste();
@@ -17,22 +18,6 @@ class ListeTest {
     }
 
     @Test
-    void getNbElements() {
-        Liste test = new Liste();
-        assertEquals(0, test.getNbElements());
-
-        test.ajouter(0);
-        assertEquals(1, test.getNbElements());
-
-        test.ajouter(0);
-        assertEquals(2, test.getNbElements());
-    }
-
-    @Test
-    void estVide() {
-    }
-
-    @Test
     void getElementAt() {
         assertEquals(0, data.getElementAt(0));
         assertEquals(30, data.getElementAt(3));
@@ -40,34 +25,58 @@ class ListeTest {
     }
 
     @Test
-    void ajouter() {
+    void getNbElements() {
+        assertEquals(6, data.getNbElements());
+        Liste vide = new Liste();
+        assertEquals(0, vide.getNbElements());
+    }
+
+    @Test
+    void estVide() {
+        assertEquals(false, data.estVide());
+        Liste vide = new Liste();
+        assertEquals(true, vide.estVide());
     }
 
     @Test
     void testAjouter() {
+        data.ajouter(90);
+        data.ajouter(91);
+        data.ajouter(92);
+        assertEquals(90, data.getElementAt(6));
+        assertEquals(91, data.getElementAt(7));
+        assertEquals(92, data.getElementAt(8));
+        assertEquals(9, data.getNbElements());
     }
 
     @Test
-    void testAjouter1() {
+    void testInserer() {
+//        data.ajouter(-10, 0);
+//        data.ajouter(35, 4);
+//        data.ajouter(60, 8);
+//        assertEquals(-10, data.getElementAt(0));
+//        assertEquals(35, data.getElementAt(4));
+//        assertEquals(60, data.getElementAt(8));
+//        assertEquals(9, data.getNbElements());
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void trouver() {
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void trouverTout() {
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void effacerAt() {
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void effacerTout() {
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     void testEffacerTout() {
     }
 }
