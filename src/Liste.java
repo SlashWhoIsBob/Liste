@@ -84,14 +84,16 @@ public class Liste {
         }
         return -1;
     }
-/*
+
     public boolean trouverTout(Liste autre) {
-        for (int i = 0; i < autre.getNbElements(); i++)
-            if (this.trouver(autre.getElementAt(i)) == -1)
+        for(Noeud courant = autre.premier; courant != null; courant = courant.prochain) {
+            if (this.trouver(courant.valeur) == -1) {
                 return false;
+            }
+        }
         return true;
     }
-
+/*
     public boolean effacerAt(int index) {
         if (index < 0 || index > nbElements)
             return false;
