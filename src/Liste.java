@@ -60,26 +60,31 @@ public class Liste {
         }
         nbElements++;
     }
-/*
-    private void resize() {
+
+    /* private void resize() {
         int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
         for (int i = 0; i < nbElements; i++)
             nouveau[i] = tableau[i];
         tableau = nouveau;
-    }
+    }*/
 
     public void ajouter(Liste autre) {
-        for (int i = 0; i < autre.getNbElements(); i++)
-            this.ajouter(autre.getElementAt(i));
+        for (Noeud courant = autre.premier; courant != null; courant = courant.prochain)
+            this.ajouter(courant.valeur);
     }
 
     public int trouver(int valeur) {
-        for (int i = 0; i < nbElements; i++)
-            if (tableau[i] == valeur)
-                return i;
+        int index = 0;
+        for(Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if(courant.valeur == valeur) {
+                return index;
+            } else {
+                index++;
+            }
+        }
         return -1;
     }
-
+/*
     public boolean trouverTout(Liste autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             if (this.trouver(autre.getElementAt(i)) == -1)
