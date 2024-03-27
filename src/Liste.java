@@ -101,15 +101,20 @@ public class Liste {
     }
 
     public boolean effacerAt(int index) {
-        if (index < -nbElements || index > nbElements)
+        if (index < -nbElements || index > nbElements) {
             return false;
-
+        }
         if (index == 0) {
             premier = premier.prochain;
-        }
-        else {
+            premier.precedent = null;
+        } else if (index == nbElements - 1 || index == -1) {
+            dernier = dernier.precedent;
+            dernier.prochain = null;
+        } else {
             Noeud precedent = getNoeudAt(index - 1);
-            precedent.prochain = precedent.prochain.prochain;
+            Noeud suivant = precedent.prochain.prochain;
+            precedent.prochain = suivant;
+            suivant.precedent = precedent;
         }
 
         nbElements--;
