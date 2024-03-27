@@ -64,7 +64,7 @@ class ListeTest {
     @Test
     void insererPositionsInvalides() {
         // Ces ajouts devraient être refusés
-        assertFalse(data.ajouter(91, -1));
+        assertFalse(data.ajouter(91, -9));
         assertFalse(data.ajouter(99, 9));
         assertEquals(5, data.getNbElements());
     }

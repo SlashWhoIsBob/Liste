@@ -1,9 +1,9 @@
 public class Liste {
-    private Noeud premier;
+    private Noeud premier, dernier;
     private int nbElements;
 
     public Liste() {
-        premier = null;
+        premier = dernier = null;
         nbElements = 0;
     }
 
@@ -27,31 +27,35 @@ public class Liste {
     }
 
     private Noeud getNoeudAt(int index) {
-        for (Noeud courant = premier; courant != null; courant = courant.prochain)
-            if (index-- == 0)
-                return courant;
+        if(index >= 0) {
+            for (Noeud courant = premier; courant != null; courant = courant.prochain)
+                if (index-- == 0)
+                    return courant;
+        } else {
+            for (Noeud courant = dernier; courant != null; courant = courant.precedent)
+                if (++index == 0)
+                    return courant;
+        }
         return null;
     }
 
-    public void ajouter(int valeur) {
-        //tableau[nbElements++] = valeur;
-
-        Noeud dernier = null;
-        for (Noeud courant = premier; courant != null; courant = courant.prochain)
-            dernier = courant;
-
-        if (dernier == null) {
+    public boolean ajouter(int valeur) {
+        if (estVide()) {
             premier = new Noeud(valeur);
+            dernier = premier;
         }
         else {
-            dernier.prochain = new Noeud(valeur);
+            Noeud nouveau = new Noeud(valeur);
+            dernier.prochain = nouveau;
+            nouveau.precedent = dernier;
+            dernier = dernier.prochain;
         }
         nbElements++;
+        return true;
     }
 
     public boolean ajouter(int valeur, int index) {
-        if (index < 0 || index > nbElements)
-            //throw new IndexOutOfBoundsException();
+        if (index < -nbElements || index > nbElements)
             return false;
 
         Noeud precedent = getNoeudAt(index - 1);
@@ -59,13 +63,16 @@ public class Liste {
 
         if (index == 0) {
             nouveau.prochain = premier;
+            nouveau.precedent = null;
             premier = nouveau;
-        }
-        else {
+        } else if(index == nbElements || index == -1) {
+            return ajouter(valeur);
+        } else {
             nouveau.prochain = precedent.prochain;
+            nouveau.precedent = precedent;
             precedent.prochain = nouveau;
+            nouveau.prochain.precedent = nouveau;
         }
-
         nbElements++;
         return true;
     }
@@ -94,7 +101,7 @@ public class Liste {
     }
 
     public boolean effacerAt(int index) {
-        if (index < 0 || index > nbElements)
+        if (index < -nbElements || index > nbElements)
             return false;
 
         if (index == 0) {
