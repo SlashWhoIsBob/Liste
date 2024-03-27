@@ -4,6 +4,7 @@ public class Noeud {
 
     public Noeud(int valeur) {
         this.valeur = valeur;
+        this.prochain = null;
     }
 
     public String toString() {
